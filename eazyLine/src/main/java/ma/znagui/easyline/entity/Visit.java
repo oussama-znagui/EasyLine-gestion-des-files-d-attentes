@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ma.znagui.eazyline.enums.VisitStatus;
 
 import java.time.LocalTime;
 
@@ -17,14 +18,18 @@ public class Visit {
     private LocalTime arrivalTime;
     private LocalTime startTime;
     private LocalTime endTime;
+    private VisitStatus status;
+    private int priority;
+    private LocalTime ept;
+
+
+
     @ManyToOne
     @MapsId("visitorID")
-    @JoinColumn(name = "visitor_id", nullable = false)
     private Visitor visitor;
 
     @ManyToOne
     @MapsId("waitingListID")
-    @JoinColumn(name = "waitingList_id", nullable = false)
     private WaitingList waitingList;
 
 }
