@@ -1,6 +1,7 @@
 package ma.znagui.easyline.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,8 +19,11 @@ public class WaitingList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull(message = "la date svp !")
     private LocalDate date;
+
     private int capacity;
+
     private String algorithme;
 
     @OneToMany(mappedBy = "waitingList")
